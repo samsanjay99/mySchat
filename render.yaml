@@ -1,0 +1,64 @@
+# Render Blueprint Configuration
+# Deploy via: Render Dashboard → New + → Blueprint
+# See RENDER_DEPLOYMENT.md for full instructions
+
+services:
+  - type: web
+    name: schat  # Try: schat-app, schat-chat, sanjay-schat, schat-web
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    
+    # Environment Variables
+    # You'll need to set these in Render Dashboard after deployment
+    envVars:
+      - key: NODE_ENV
+        value: production
+      
+      # Database - Set this in Render Dashboard
+      - key: DATABASE_URL
+        sync: false
+      
+      # JWT Secret - Auto-generated or set manually
+      - key: JWT_SECRET
+        generateValue: true
+      
+      # Admin Panel Configuration (Optional - for initial setup)
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_FULLNAME
+        sync: false
+      
+      # A4F API Configuration - Set these in Render Dashboard
+      - key: A4F_API_KEY
+        value: ddc-a4f-73b259b67d954d5087f48319b7673747
+      - key: A4F_BASE_URL
+        value: https://api.a4f.co/v1
+      - key: SUPER_AI_MODEL
+        value: provider-5/deepseek-r1-0528-qwen3-8b
+      - key: FALLBACK_MODEL
+        value: provider-6/gemma-3-27b-instruct
+      
+      # Firebase Configuration - Set these in Render Dashboard
+      - key: VITE_FIREBASE_API_KEY
+        sync: false
+      - key: VITE_FIREBASE_AUTH_DOMAIN
+        sync: false
+      - key: VITE_FIREBASE_PROJECT_ID
+        sync: false
+      - key: VITE_FIREBASE_STORAGE_BUCKET
+        sync: false
+      - key: VITE_FIREBASE_MESSAGING_SENDER_ID
+        sync: false
+      - key: VITE_FIREBASE_APP_ID
+        sync: false
+      - key: VITE_FIREBASE_MEASUREMENT_ID
+        sync: false

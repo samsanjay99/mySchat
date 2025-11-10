@@ -1,0 +1,63 @@
+services:
+  # Main Web Service (Docker)
+  - type: web
+    name: schat-app
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    region: oregon
+    branch: main
+    
+    # Environment variables
+    envVars:
+      - key: NODE_ENV
+        value: production
+      
+      - key: PORT
+        value: 3001
+      
+      # Database (use your actual database URL)
+      - key: DATABASE_URL
+        sync: false
+      
+      # JWT Secret
+      - key: JWT_SECRET
+        generateValue: true
+      
+      # A4F API Configuration
+      - key: A4F_API_KEY
+        value: ddc-a4f-73b259b67d954d5087f48319b7673747
+      
+      - key: A4F_BASE_URL
+        value: https://api.a4f.co/v1
+      
+      # Admin Configuration
+      - key: ADMIN_EMAIL
+        value: admin@schat.com
+      
+      - key: ADMIN_PASSWORD
+        sync: false
+      
+      - key: ADMIN_FULL_NAME
+        value: System Administrator
+    
+    # Health check endpoint
+    healthCheckPath: /api/health
+    
+    # Auto-deploy on push
+    autoDeploy: true
+    
+    # Build command (Docker handles this)
+    # No buildCommand needed for Docker
+    
+    # Start command (Docker handles this)
+    # No startCommand needed for Docker
+
+# Database
+databases:
+  - name: schat-db
+    databaseName: schat
+    user: schat_user
+    plan: free
+    region: oregon

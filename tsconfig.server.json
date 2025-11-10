@@ -1,0 +1,22 @@
+{
+  "include": ["server/**/*", "shared/**/*", "super-ai/server/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "client/**/*", "super-ai/client/**/*"],
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["./shared/*"]
+    }
+  }
+}

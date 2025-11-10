@@ -1,0 +1,15 @@
+# Files to ignore during Render deployment
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.cache
+coverage
+.nyc_output
+node_modules/.cache

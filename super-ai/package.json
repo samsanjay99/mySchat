@@ -1,0 +1,30 @@
+{
+  "name": "@schat/super-ai",
+  "version": "1.0.0",
+  "description": "Super AI module for Schat messaging application",
+  "type": "module",
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "migrate": "cross-env NODE_ENV=development tsx server/migrate-super-ai.ts",
+    "migrate:column": "cross-env NODE_ENV=development tsx server/migrate-add-super-ai-column.ts"
+  },
+  "dependencies": {
+    "zod": "^3.24.2"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@tanstack/react-query": "^5.60.5",
+    "express": "^4.21.2"
+  },
+  "keywords": [
+    "ai",
+    "chat",
+    "messaging",
+    "super-ai",
+    "schat"
+  ],
+  "author": "Schat Team",
+  "license": "MIT"
+} 
