@@ -9,7 +9,7 @@ services:
     region: oregon
     plan: free
     buildCommand: npm install --include=dev && npm run build
-    startCommand: npm start
+    startCommand: node start-prod.js
     healthCheckPath: /api/health
     autoDeploy: true
     
